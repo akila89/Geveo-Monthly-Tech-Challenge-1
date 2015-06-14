@@ -18,11 +18,8 @@
       version    : 'v2.3'
     });
   };
-</script>
-<div id="accountInfo" style="padding-top: 20px">Please log in to your facebook account.</div>
-<div class="fb-login-button" id="loginBtn" data-max-rows="1" data-size="medium" data-auto-logout-link="true"></div>
-<script>
-  FB.Event.subscribe('auth.statusChange', function(response) {
+  window.onload= function(){
+    FB.Event.subscribe('auth.statusChange', function(response) {
     Log.info('Status Change Event', response);
     if (response.status === 'connected') {
       showAccountInfo();
@@ -45,9 +42,10 @@
       Log.info('API response', response);
       document.getElementById('accountInfo').innerHTML = ('<img src="' + response.picture.data.url + '"> ' + response.name);
     });
-    //document.getElementById('loginBtn').style.display = 'none';
+  }
   }
 </script>
-
+<div id="accountInfo" style="padding-top: 20px">Please log in to your facebook account.</div>
+<div class="fb-login-button" id="loginBtn" data-max-rows="1" data-size="medium" data-auto-logout-link="true"></div>
 </body>
 </html>
