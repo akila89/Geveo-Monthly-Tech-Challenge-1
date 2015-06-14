@@ -2,8 +2,6 @@
 <body>
 <h1>Geveo Monthly Tech Challenge 1</h1>
 
-<a href="#" id="login-btn">Log in with Facebook</a>
-
 <script type="text/javascript">
   window.fbAsyncInit = function() {
     FB.init({
@@ -23,11 +21,32 @@
 
 document.getElementById('login-btn').onclick = function() {
   FB.login(function(response) {
-    Log.info('FB.login response', response);
+    console.log('FB.login response', response);
   });
   return false;
 }
 </script>
 <div class="fb-login-button" data-max-rows="1" data-size="medium" data-auto-logout-link="false"></div>
+
+<h2>Checking Login Status</h2>
+
+<p>The <a href="https://developers.facebook.com/docs/reference/javascript/FB.getLoginStatus">FB.getLoginStatus()</a> function in the SDK will return the current login status of the user, and this example will show that response status in the log (look for 'Status Response' entries).</p>
+
+<script>
+  FB.getLoginStatus(function(response) {
+    Log.info('Status Response', response);
+  });
+</script>
+
+<h2>Tracking Status Changes</h2>
+
+<script>
+  FB.Event.subscribe('auth.statusChange', function(response) {
+    console.log('Status Change Event', response);
+  });
+</script>
+
+<div class="fb-login-button" data-max-rows="1" data-size="medium" data-auto-logout-link="true"></div>
+
 </body>
 </html>
