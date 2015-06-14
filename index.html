@@ -19,23 +19,11 @@
      fjs.parentNode.insertBefore(js, fjs);
    }(document, 'script', 'facebook-jssdk'));
 
-//document.getElementById('login-btn').onclick = function() {
-//  FB.login(function(response) {
-//    console.log('FB.login response', response);
-//  });
-//  return false;
-//}
-</script>
-
-
-<script>
-  FB.getLoginStatus(function(response) {
+FB.getLoginStatus(function(response) {
     console.log('Status Response', response);
   });
-</script>
 
-<script>
-  FB.Event.subscribe('auth.statusChange', function(response) {
+FB.Event.subscribe('auth.statusChange', function(response) {
     console.log('Status Change Event', response);
   });
 </script>
